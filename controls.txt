@@ -1,0 +1,24 @@
+## LIGHT 0
+O - Disable light 0
+P - Enable light 0
+I - Randomize color of light 0
+U - Set color of light 0 to White
+
+## LIGHT 1
+K - Disable light 1
+L - Enable light 1
+J - Randomize color of light 1
+H - Set color of light 1 to White
+
+## BALL CONTROL
+R - Set objects to standard
+X - Reset objects and add random bouncy balls
+Z - Add random bouncy balls
+C - Reset objects and add 'strange' ball like objects
+
+## Camera
+T - Set front view
+W - Zoom in
+S - Zoom out
+A - Enable rotating to right - press again to disable rotating
+D - Enable rotating to left - press again to disable rotating

@@ -48,7 +48,9 @@ class Ball(Object):
 
     def draw(self):
         super().draw_start()
+        #glEnable(GL_TEXTURE_2D)
         glutSolidSphere(self.size, self.quality, 25)
+        #glDisable(GL_TEXTURE_2D)
         super().draw_end()
 
 

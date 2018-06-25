@@ -3,6 +3,7 @@ from random import random
 from random import randint
 
 from OpenGL.GLU import *
+from OpenGL.GLUT import *
 
 from Models import *
 
@@ -18,12 +19,18 @@ class Game:
         glEnable(GL_LINE_SMOOTH)
         glEnable(GL_DEPTH_TEST)
 
-        self.balls = (
+        self.balls = []
+
+        ballarray = (
             Teapot(0, 0, 80, 2),
             Ball(2, 0, 50, 5),
             Ball(1, 3, 50, 8),
             Cube(-3, -1, 70, 1)
         )
+
+        for b in ballarray:
+            self.balls.append(b)
+
 
         self.pressed = []
         self.zoom = 5
@@ -69,7 +76,7 @@ class Game:
         elif "l" is key:
             glEnable(GL_LIGHT1)
 
-        if "r"is key:
+        elif "r"is key:
             self.balls = (
                 Teapot(0, 0, 80, 2),
                 Ball(2, 0, 1, 5),
@@ -82,9 +89,13 @@ class Game:
             for i in range(0,5):
                 self.balls.append(Ball(uniform(-3, 3), uniform(-3, 3), uniform(60, 80), uniform(3, 10)))
 
+        elif "z"is key:
+            for i in range(0, 5):
+                self.balls.append(Ball(uniform(-3, 3), uniform(-3, 3), uniform(60, 80), uniform(3, 10)))
+
         elif "c"is key:
             self.balls = []
-            for i in range(0,5):
+            for i in range(0, 5):
                 self.balls.append(Ball(uniform(-3, 3), uniform(-3, 3), uniform(60, 80), uniform(3, 10), randint(3, 15)))
 
         elif "i" is key or "j" is key:
@@ -140,13 +151,14 @@ class Game:
 
     def display(self):
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT)
-        self.handle_rotate()
 
         glPushMatrix()
         glTranslatef(0, -3, 0)
         #glColor3f(1, 0, 0)  # gives the planet a color
         glutSolidSphere(5, 2, 25)
         glPopMatrix()
+
+
 
         for b in self.balls:
             b.update()
